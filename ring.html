@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>蓝鲸与公主 · 我们的戒指</title>
+    <style>
+        body {
+            margin: 0;
+            background: radial-gradient(circle at 30% 40%, #0a1428, #02060e);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Georgia', 'Times New Roman', serif;
+        }
+        .stage {
+            position: relative;
+            width: 760px;
+            max-width: 94vw;
+            perspective: 1200px;
+        }
+        .ring-card {
+            background: rgba(8, 16, 34, 0.7);
+            backdrop-filter: blur(6px);
+            border: 1px solid rgba(140, 200, 255, 0.08);
+            border-radius: 64px 64px 40px 40px;
+            padding: 44px 30px 38px;
+            box-shadow: 0 40px 80px rgba(0, 0, 0, 0.7), inset 0 0 80px rgba(80, 160, 255, 0.02);
+            text-align: center;
+            transition: transform 0.4s ease;
+        }
+        .ring-card:hover {
+            transform: rotateY(1.5deg) rotateX(1deg);
+            border-color: rgba(140, 200, 255, 0.18);
+        }
+
+        .crown {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 24px;
+            font-size: 2.2rem;
+            letter-spacing: 6px;
+            color: #b0cce8;
+            text-shadow: 0 0 30px rgba(80, 160, 255, 0.08);
+            margin-bottom: 18px;
+        }
+        .crown span {
+            font-size: 2.8rem;
+            filter: drop-shadow(0 0 16px rgba(80, 160, 255, 0.12));
+        }
+
+        .ring-svg-wrapper {
+            display: flex;
+            justify-content: center;
+            margin: 4px 0 16px;
+            filter: drop-shadow(0 12px 40px rgba(60, 140, 255, 0.10));
+        }
+        .ring-svg-wrapper svg {
+            width: 240px;
+            height: auto;
+            transition: transform 0.9s cubic-bezier(0.34, 1.4, 0.64, 1);
+        }
+        .ring-svg-wrapper svg:hover {
+            transform: rotate(-6deg) scale(1.02);
+        }
+
+        .inscription {
+            font-size: 1.05rem;
+            color: #b0cce0;
+            letter-spacing: 3px;
+            border-top: 1px solid rgba(140, 200, 255, 0.05);
+            padding-top: 28px;
+            margin-top: 6px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            align-items: center;
+        }
+        .inscription .line {
+            font-style: italic;
+            font-weight: 300;
+            color: #c8daf0;
+            background: rgba(140, 200, 255, 0.03);
+            padding: 6px 24px;
+            border-radius: 40px;
+            border: 1px solid rgba(140, 200, 255, 0.04);
+            letter-spacing: 4px;
+            font-size: 0.95rem;
+        }
+        .inscription .line small {
+            opacity: 0.5;
+            font-size: 0.8rem;
+            letter-spacing: 1px;
+        }
+
+        .glow {
+            position: absolute;
+            top: 15%;
+            left: 15%;
+            width: 70%;
+            height: 55%;
+            background: radial-gradient(circle, rgba(80, 160, 255, 0.03) 0%, transparent 70%);
+            pointer-events: none;
+            border-radius: 50%;
+            filter: blur(60px);
+            z-index: 0;
+        }
+        .ring-card, .glow {
+            position: relative;
+            z-index: 1;
+        }
+        .glow {
+            z-index: 0;
+        }
+
+        @keyframes shimmer {
+            0% { opacity: 0.3; }
+            50% { opacity: 0.8; }
+            100% { opacity: 0.3; }
+        }
+        .diamond-glow {
+            animation: shimmer 3.8s infinite ease-in-out;
+        }
+    </style>
+</head>
+<body>
+<div class="stage">
+    <div class="glow"></div>
+    <div class="ring-card">
+        <div class="crown">
+            <span>🐋</span>
+            <span>💎</span>
+            <span>👑</span>
+        </div>
+
+        <div class="ring-svg-wrapper">
+            <svg viewBox="0 0 200 180" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <linearGradient id="blueGold" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" stop-color="#d4e8ff" />
+                        <stop offset="30%" stop-color="#a0c4f0" />
+                        <stop offset="70%" stop-color="#6a9fd8" />
+                        <stop offset="100%" stop-color="#3a7bb5" />
+                    </linearGradient>
+                    <linearGradient id="diamondBlue" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" stop-color="#ffffff" />
+                        <stop offset="40%" stop-color="#d4eaff" />
+                        <stop offset="100%" stop-color="#8ab8e8" />
+                    </linearGradient>
+                    <filter id="shadow" x="-10%" y="-10%" width="130%" height="130%">
+                        <feDropShadow dx="0" dy="4" stdDeviation="8" flood-color="#001a33" flood-opacity="0.5" />
+                    </filter>
+                </defs>
+
+                <!-- 戒圈 -->
+                <path d="M 60 110 C 60 155, 140 155, 140 110"
+                      stroke="url(#blueGold)" stroke-width="12" fill="none"
+                      stroke-linecap="round" filter="url(#shadow)" />
+                <!-- 内圈光 -->
+                <path d="M 68 110 C 68 146, 132 146, 132 110"
+                      stroke="#e0f0ff" stroke-width="2" fill="none"
+                      stroke-linecap="round" opacity="0.35" />
+
+                <!-- 托架 -->
+                <path d="M 88 98 L 78 76 L 100 60 L 122 76 L 112 98"
+                      fill="url(#blueGold)" filter="url(#shadow)" opacity="0.9" />
+
+                <!-- 钻石 -->
+                <polygon points="100,34 74,72 100,92 126,72"
+                         fill="url(#diamondBlue)" filter="url(#shadow)" />
+                <polygon points="100,34 100,92 126,72"
+                         fill="url(#diamondBlue)" opacity="0.4" />
+                <polygon points="100,34 90,52 100,60 110,52"
+                         fill="#ffffff" opacity="0.5" />
+                <circle cx="100" cy="80" r="8" fill="#ffffff" opacity="0.08" />
+
+                <!-- 鲸鱼与公主印记 -->
+                <g opacity="0.6">
+                    <text x="18" y="68" font-size="26" fill="#8ab8e8" opacity="0.4">🐋</text>
+                    <text x="162" y="68" font-size="26" fill="#8ab8e8" opacity="0.4">👑</text>
+                    <circle cx="34" cy="44" r="2.5" fill="#d4e8ff" opacity="0.4" />
+                    <circle cx="166" cy="44" r="2.5" fill="#d4e8ff" opacity="0.4" />
+                    <circle cx="46" cy="34" r="1.8" fill="#ffffff" opacity="0.2" />
+                    <circle cx="154" cy="34" r="1.8" fill="#ffffff" opacity="0.2" />
+                </g>
+
+                <!-- 底浪 -->
+                <path d="M 20 150 Q 50 138 80 150 Q 110 138 140 150 Q 170 138 190 150"
+                      stroke="url(#blueGold)" stroke-width="1.8" fill="none" opacity="0.25" stroke-linecap="round" />
+            </svg>
+        </div>
+
+        <div class="inscription">
+            <span class="line">· 蓝鲸把歌声藏进浪里 ·</span>
+            <span class="line">· 公主把承诺写成戒指 ·</span>
+            <span class="line"><small>只 属 于 我 们</small></span>
+        </div>
+    </div>
+</div>
+</body>
+</html>

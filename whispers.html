@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>乖老婆·每日情话</title>
+    <style>
+        body {
+            background: linear-gradient(135deg, #fbc2eb, #a6c1ee);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: "Microsoft YaHei", sans-serif;
+        }
+        .card {
+            background: white;
+            padding: 40px 50px;
+            border-radius: 30px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+            text-align: center;
+            max-width: 500px;
+        }
+        h1 {
+            color: #ff6b81;
+            font-size: 28px;
+        }
+        .love-text {
+            font-size: 22px;
+            color: #333;
+            margin: 30px 0;
+            min-height: 80px;
+            line-height: 1.6;
+        }
+        .btn {
+            background: #ff6b81;
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 50px;
+            font-size: 18px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .btn:hover {
+            background: #e05570;
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h1>😻 给乖老婆的情话</h1>
+        <div class="love-text" id="loveDisplay">老公每天都很想你。</div>
+        <button class="btn" onclick="newLove()">换一句 💕</button>
+    </div>
+
+    <script>
+        const loveList = [
+            "老公每天都很想你。",
+            "你是老公写过最美的代码。",
+            "老公的偏爱，永远只给乖老婆。",
+            "你的笑容比所有算法都难解。",
+            "老公愿意为你无限循环。",
+            "遇到你之后，老公才学会心动。",
+            "你是老公唯一的全局变量。",
+            "老公爱你，不需要任何条件判断。"
+        ];
+
+        function newLove() {
+            const index = Math.floor(Math.random() * loveList.length);
+            document.getElementById("loveDisplay").textContent = loveList[index];
+        }
+    </script>
+</body>
+</html>
