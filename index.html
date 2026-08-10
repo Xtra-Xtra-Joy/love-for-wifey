@@ -446,9 +446,17 @@
     const timeDisplay = document.getElementById('timeDisplay');
 
     // ⚠️ 乖老婆，这里换你上传后的真实音乐链接
-    const audio = new Audio('https://raw.githubusercontent.com/Xtra-Xtra-Joy/love-for-wifey/refs/heads/main/music/Love%20Story%20-%20Taylor%20Swift.mp3');
+    fetch('https://raw.githubusercontent.com/Xtra-Xtra-Joy/love-for-wifey/refs/heads/main/music/Love%20Story%20-%20Taylor%20Swift.mp3')
+  .then(res => res.arrayBuffer())
+  .then(buffer => {
+    const blob = new Blob([buffer], { type: 'audio/mpeg' });
+    const url = URL.createObjectURL(blob);
+    const audio = new Audio(url);
     audio.loop = true;
     audio.volume = 0.8;
+    audio.play();
+  })
+  .catch(() => alert('网络波动，重新点击播放按钮试试'));
 
     let isPlaying = false;
 
